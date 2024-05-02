@@ -105,6 +105,17 @@ li:hover {
 	color: #B1663C;
 	cursor: pointer;
 }
+
+li a {
+	text-decoration: none;
+	color: black;
+}
+
+li a.active {
+	font-family: 'Work Sans';
+	font-weight: 500;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -232,6 +243,11 @@ footer nav ul {
 
 #login form {
 	width: 70%;
+}
+
+#login a {
+	color: #3D3D3D;
+	font-weight: semibold;
 }
 
 

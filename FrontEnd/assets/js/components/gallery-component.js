@@ -1,4 +1,4 @@
-import { getCategories } from './api.js';
+import { getCategories } from '../services/category-service.js';
 
 const galleryContainer = document.querySelector('.gallery');
 const filterContainer = document.querySelector('.filter');
