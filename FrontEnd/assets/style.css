@@ -250,4 +250,9 @@ footer nav ul {
 	font-weight: semibold;
 }
 
+.error {
+	color: red;
+	margin-top: 16px;
+}
+
 
