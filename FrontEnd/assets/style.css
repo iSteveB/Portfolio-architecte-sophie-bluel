@@ -64,6 +64,9 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+header.logged{
+	margin: 90px 0;
+}
 section {
 	margin: 50px 0
 }
@@ -253,6 +256,32 @@ footer nav ul {
 .error {
 	color: red;
 	margin-top: 16px;
+}
+
+.banner.editing {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px;
+	background-color: #000;
+	color: #fff;
+}
+
+h2 > .editing {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 14px;
+	color: #000;
+	padding-left: 10px;
+}
+
+.editing {
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	text-align: center;
 }
 
 
