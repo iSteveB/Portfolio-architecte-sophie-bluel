@@ -1,4 +1,4 @@
-import { login } from './services/login-service.js';
+import { login } from './services/auth-service.js';
 
 const loginForm = document.querySelector('#login form');
 const emailInput = document.getElementById('email');
