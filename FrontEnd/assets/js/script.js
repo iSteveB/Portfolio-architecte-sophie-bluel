@@ -2,7 +2,24 @@ import { getData } from '../js/services/work-service.js';
 import { displayGallery } from './components/gallery-component.js';
 import { createCategories, filterGalleryByCategory, handleFilterClass } from './components/filter-component.js';
 
-createCategories();
+
+window.onload = async () => {
+	const token = localStorage.getItem('token');
+	const header = document.querySelector('header');
+	const editDiv = document.querySelector('.editing');
+
+	if (!token) {
+		createCategories();
+		header.classList.remove('logged');
+		editDiv.style.display = 'none';
+	} else {
+		header.classList.add('logged');
+		editDiv.style.display = 'flex';
+	}
+}
+
+
+
 
 const data = await getData();
 displayGallery(data);
