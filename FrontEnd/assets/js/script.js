@@ -18,9 +18,6 @@ window.onload = async () => {
 	}
 }
 
-
-
-
 const data = await getData();
 displayGallery(data);
 
@@ -40,3 +37,24 @@ export const handleFilterClick = async (event) => {
 		handleFilterClass(event);
 	}
 };
+
+
+// Modal
+
+const openModal = () => {
+	const modal = document.querySelector('.modal-container');
+	modal.style.display = 'flex';
+}
+
+const closeModal = () => {
+	const modal = document.querySelector('.modal-container');
+	modal.style.display = 'none';
+}
+
+document.querySelector('.open-modal').addEventListener('click', () => {
+	openModal()
+})
+
+document.querySelector('.close-modal').addEventListener('click', () => {
+	closeModal()
+})
