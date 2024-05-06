@@ -198,7 +198,7 @@ margin: auto;
 	flex-direction: column;
 }
 
-#contact input, #login input {
+#contact input, #login input, .modal button {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -303,19 +303,80 @@ h2 > .editing {
 }
 
 .modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	position: relative;
 	width: 50%;
 	max-width: calc(100vw - 40px);
-	height: 70%;
 	max-height: calc(100vh - 40px);
 	padding: 20px;
 	border-radius: 5px;
 	background-color: #fff;
 }
 
+.modal-content {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 30px 100px;
+	padding-bottom: 40px;
+	gap: 30px 10px;
+	border-bottom: 1px solid #1D6154;
+}
+
+.modal h2 {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 26px;
+	color: #000;
+	margin: 40px 0;
+}
+
+.modal button {
+	padding: 10px 50px;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	border-radius: 60px;
+	margin-bottom: 25px;
+}
+
+.image-container {
+	position: relative;
+}
+
+.image-container img[id] {
+	width: 90px;
+	height: 115px;
+}
+
+.modal-content i {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25px;
+	height: 25px;
+	top: 5px;
+	right: 5px;
+	cursor: pointer;
+	font-size: 20px;
+	background-color: #000;
+	border-radius: 5px;
+}
+
+.modal-content i img {
+	width: 60%;
+	height: 60%;
+}
+
 .close-modal {
 	position: absolute;
-	top: 15px;
-	right: 15px;
+	top: 30px;
+	right: 30px;
 	cursor: pointer;
+	font-size: 35px;
 }
