@@ -1,5 +1,6 @@
 
 import { createImg } from '../models/gallery-model.js';
+import { createElement } from '../models/htmlElement-model.js';
 
 export const displayImages = (galleryItems) => {
 	const modalContent = document.querySelector('.modal-content');
@@ -19,30 +20,18 @@ export const displayImages = (galleryItems) => {
 	});
 };
 
-
 export const createModal = () => {
-	const modalContainer = document.createElement('aside');
-	modalContainer.className = 'modal-container';
+	const modalContainer = createElement('aside', 'modal-container');
+	const modal = createElement('div', 'modal');
+	const h2 = createElement('h2', '', 'Galerie photo');
+	const closeModal = createElement('span', 'close-modal', 'X');
+	const modalContent = createElement('div', 'modal-content');
+	const addButton = createElement('button', '', 'Ajouter une photo');
 
-	const modal = document.createElement('div');
-	modal.className = 'modal';
 	modalContainer.appendChild(modal);
-
-	const h2 = document.createElement('h2');
-	h2.textContent = 'Galerie photo';
 	modal.appendChild(h2);
-
-	const closeModal = document.createElement('span');
-	closeModal.className = 'close-modal';
-	closeModal.innerHTML = '&#215;';
 	modal.appendChild(closeModal);
-
-	const modalContent = document.createElement('div');
-	modalContent.className = 'modal-content';
 	modal.appendChild(modalContent);
-
-	const addButton = document.createElement('button');
-	addButton.textContent = 'Ajouter une photo';
 	modal.appendChild(addButton);
 
 	document.body.appendChild(modalContainer);

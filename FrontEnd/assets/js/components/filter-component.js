@@ -1,6 +1,6 @@
 import { getCategories } from '../services/category-service.js';
 import { displayGallery } from '../components/gallery-component.js';
-import { createListItem } from '../models/listItem-model.js';
+import { createListItem } from '../models/htmlElement-model.js';
 
 const filterContainer = document.querySelector('.filter');
 

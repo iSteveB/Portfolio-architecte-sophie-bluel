@@ -1,3 +1,4 @@
+
 const galleryContainer = document.querySelector('.gallery');
 
 export const createGalleryCard = ({ imageUrl, title }) => {
@@ -14,11 +15,12 @@ export const createGalleryCard = ({ imageUrl, title }) => {
 	galleryContainer.appendChild(figure);
 };
 
-export const createImageGallery = ({ imageUrl }) => {
+export const createImageGallery = ({ imageUrl, title }) => {
 	const figure = document.createElement('figure');
 	const img = document.createElement('img');
 
 	img.src = imageUrl;
+	img.alt = title;
 	figure.appendChild(img);
 }
 
@@ -29,19 +31,20 @@ export const createImg = ({ imageUrl, title, id }) => {
 	const image = document.createElement('img');
 
 	const icon = document.createElement('i');
-	const img = document.createElement('img');
-	img.src = './assets/icons/trash-can-solid.svg';
-	img.alt = 'delete';
-	icon.appendChild(img);
+	const deleteIcon = document.createElement('img');
+	deleteIcon.src = './assets/icons/trash-can-solid.svg';
+	deleteIcon.alt = 'delete';
+	deleteIcon.id = id;
+	icon.className = 'delete-icon';
+	icon.appendChild(deleteIcon);
 	imageContainer.appendChild(icon);
 
 	image.src = imageUrl;
 	image.alt = title;
-	if (id) {
-		image.id = id;
-	}
+	image.classList.add('edit-image');
 
 	imageContainer.appendChild(image);
 
 	return imageContainer;
 };
+
