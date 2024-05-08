@@ -191,14 +191,14 @@ margin: auto;
 #contact h2{
 	margin-bottom: 20px;
 }
-#contact form, #login form{
+#contact form, #login form, .modal form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input, #login input, .modal button {
+#contact input, #login input, .modal button, .modal input, .modal select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -342,13 +342,14 @@ h2 > .editing {
 	background-color: #1D6154;
 	border-radius: 60px;
 	margin-bottom: 25px;
+	cursor: pointer;
 }
 
 .image-container {
 	position: relative;
 }
 
-.image-container img[id] {
+.image-container .edit-image {
 	width: 90px;
 	height: 115px;
 }
@@ -380,3 +381,98 @@ h2 > .editing {
 	cursor: pointer;
 	font-size: 35px;
 }
+
+// Form
+
+.modal-form {
+	display: flex;
+	background-color: red;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.modal-form button {
+	margin: 20px;
+}
+
+.modal-form button:disabled {
+	background-color: #A7A7A7;
+	cursor: not-allowed;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.go-back {
+	cursor: pointer;
+	position: absolute;
+	top: 0px;
+	left: 20px;
+	font-size: 50px;
+}
+
+.form-container input[type="file"] {
+	display: none;
+}
+
+.upload-file-container {
+	margin-bottom: 30px;
+}
+
+.upload-file {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 150px;
+	background-color: #f6f6f6;
+	border-radius: 5px;
+	cursor: pointer;
+	gap: 10px;
+}
+.upload-file img {
+	width: 80px;
+	height: 80px;
+}
+.upload-file p {
+	background-color: #CBD6DD;
+	padding: 14px 30px;
+	border-radius: 50px;
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 14px;
+	color: #306685;
+}
+
+.upload-file span {
+	font-family: 'Work Sans';
+	font-weight: 400;
+	font-size: 12px;
+	color: #444;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	width: 100%;
+	padding-bottom: 50px;
+	border-bottom: 1px solid #1D6154;
+}
+
+.title-container, .category-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	gap: 10px;
+	width: 100%;
+} 
+
