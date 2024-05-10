@@ -1,28 +1,15 @@
 import { deleteWork, getData } from '../js/services/work-service.js';
 import { displayGallery } from './components/gallery-component.js';
-import { createCategories, filterGalleryByCategory, handleFilterClass } from './components/filter-component.js';
+import { filterGalleryByCategory, handleFilterClass } from './components/filter-component.js';
 import { createModal, displayImages } from './components/modal-component.js';
-import { createFormModal} from './components/form-component.js';
+import { createFormModal } from './components/form-component.js';
 import { checkUser } from './utils/checkUser.js';
+import { editContent } from './components/auth-component.js';
 
-	const token = checkUser();
-	const header = document.querySelector('header');
-	const editDiv = document.querySelector('.editing');
-	const editBtn = document.querySelector('.editing.open-modal');
-	
-	
-	if (!token) {
-		createCategories();
-		header.classList.remove('logged');
-		editDiv.style.display = 'none';
-		editBtn.style.display = 'none';
-	} else {
-		header.classList.add('logged');
-		editDiv.style.display = 'flex';
-	}
-	
-	
-	const data = await getData();
+const token = checkUser();
+editContent(token);
+
+const data = await getData();
 displayGallery(data);
 
 const filterBtns = document.querySelectorAll('.filter li');
@@ -45,7 +32,7 @@ export const handleFilterClick = async (event) => {
 const handleModal = () => {
 	const token = checkUser();
 	createModal();
-	
+
 	const modalContainer = document.querySelector('.modal-container');
 	const modalContent = document.querySelector('.modal-content');
 	const closeBtn = document.querySelector('.close-modal');
@@ -65,13 +52,17 @@ const handleModal = () => {
 		})
 	);
 
-	document.querySelector('.modal button').addEventListener('click', createFormModal);
-	
-	document.querySelector('.modal-container').addEventListener('click', (event) => {
+	document
+		.querySelector('.modal button')
+		.addEventListener('click', createFormModal);
+
+	document
+		.querySelector('.modal-container')
+		.addEventListener('click', (event) => {
 			if (event.target === modalContainer || event.target === closeBtn) {
 				closeModal(event);
 			}
-	});
+		});
 };
 
 document.querySelector('.open-modal').addEventListener('click', handleModal);
