@@ -21,10 +21,10 @@ export const displayImages = (galleryItems) => {
 };
 
 export const createModal = () => {
-	const modalContainer = createElement('aside', 'modal-container');
+	const modalContainer = createElement('dialog', 'modal-container');
 	const modal = createElement('div', 'modal');
 	const h2 = createElement('h2', '', 'Galerie photo');
-	const closeModal = createElement('span', 'close-modal', 'X');
+	const closeModal = createElement('span', 'close-modal', '', '&#215;', );
 	const modalContent = createElement('div', 'modal-content');
 	const addButton = createElement('button', '', 'Ajouter une photo');
 
