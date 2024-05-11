@@ -12,8 +12,6 @@ export const displayImages = (galleryItems) => {
 
 	modalContent.innerHTML = '';
 
-  console.log(galleryItems);
-
 	galleryItems.forEach(({ imageUrl, title, id }) => {
 		const image = createImg({ imageUrl, title, id });
 		modalContent.appendChild(image);
@@ -24,7 +22,7 @@ export const createModal = () => {
 	const modalContainer = createElement('dialog', 'modal-container');
 	const modal = createElement('div', 'modal');
 	const h2 = createElement('h2', '', 'Galerie photo');
-	const closeModal = createElement('span', 'close-modal', '', '&#215;', );
+	const closeModal = createElement('span', 'close-modal', '', '&#215;');
 	const modalContent = createElement('div', 'modal-content');
 	const addButton = createElement('button', '', 'Ajouter une photo');
 
