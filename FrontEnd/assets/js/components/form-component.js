@@ -1,5 +1,6 @@
 import { createElement } from '../models/htmlElement-model.js';
 import { previewImage, sendForm } from '../models/form-model.js';
+import { handleModal } from '../script.js';
 
 export const createFormModal = () => {
   const modal = document.querySelector('.modal');
@@ -57,6 +58,15 @@ export const createFormModal = () => {
   })
   previewImage(fileInput);
 
+  goBack(goBackButton);
+  
   return modal;
 }
 
+export const goBack = (button) => {
+  button.addEventListener('click', () => {
+    const modal = document.querySelector('.modal-container');
+    modal.remove();
+    handleModal();
+  })
+}
