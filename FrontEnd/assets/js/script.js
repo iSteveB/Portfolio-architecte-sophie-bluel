@@ -29,7 +29,7 @@ export const handleFilterClick = async (event) => {
 	}
 };
 
-const handleModal = () => {
+export const handleModal = () => {
 	const token = checkUser();
 	createModal();
 
@@ -68,6 +68,6 @@ const handleModal = () => {
 document.querySelector('.open-modal').addEventListener('click', handleModal);
 
 const closeModal = () => {
-	const modal = document.querySelector('.m2056,,,odal-container');
-	modal.style.display = 'none';
+	const modal = document.querySelector('.modal-container');
+	modal.remove();
 };
