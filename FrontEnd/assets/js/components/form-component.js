@@ -22,11 +22,11 @@ export const createFormModal = () => {
   const categoryContainer = createElement('div', 'category-container');
   const categoryLabel = createElement('label', null, 'Categorie');
   const categorySelect = createElement('select', null, null, null, { name: 'category', id: 'category' });
+  const option0 = createElement('option', null, '', null, { value: null, disabled: true, selected: true });
   const option1 = createElement('option', null, 'Objet', null, { value: '1' });
   const option2 = createElement('option', null, 'Appartement', null, { value: '2' });
   const option3 = createElement('option', null, 'Hotels & restaurants', null, { value: '3' });
-  const submitBtn = createElement('button', null, 'Valider', null, { type: 'submit' });
-
+  const submitBtn = createElement('button', null, 'Valider', null, { type: 'submit', disabled: true });
 
   modal.innerHTML = '';
   modal.appendChild(h2);
@@ -47,6 +47,7 @@ export const createFormModal = () => {
   inputContainer.appendChild(categoryContainer);
   categoryContainer.appendChild(categoryLabel);
   categoryContainer.appendChild(categorySelect);
+  categorySelect.appendChild(option0);
   categorySelect.appendChild(option1);
   categorySelect.appendChild(option2);
   categorySelect.appendChild(option3);
@@ -59,6 +60,14 @@ export const createFormModal = () => {
   previewImage(fileInput);
 
   goBack(goBackButton);
+
+  form.addEventListener('input', () => {
+    if (isFiled()) {
+      submitBtn.disabled = false;
+    } else {
+      submitBtn.disabled = true;
+    }
+  })
   
   return modal;
 }
@@ -69,4 +78,15 @@ export const goBack = (button) => {
     modal.remove();
     handleModal();
   })
+}
+
+const isFiled = () => {
+  const titleInput = document.getElementById('title');
+  const categoryInput = document.getElementById('category');
+  const fileInput = document.getElementById('file');
+  if (titleInput.value && categoryInput.value !== "null" && fileInput.files[0]) {
+    return true;
+  } else {
+    return false;
+  }
 }
