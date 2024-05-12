@@ -35,7 +35,6 @@ export const handleModal = () => {
 
 	const modalContainer = document.querySelector('.modal-container');
 	const modalContent = document.querySelector('.modal-content');
-	const closeBtn = document.querySelector('.close-modal');
 
 	modalContainer.style.display = 'flex';
 	modalContent.innerHTML = '';
@@ -56,18 +55,19 @@ export const handleModal = () => {
 		.querySelector('.modal button')
 		.addEventListener('click', createFormModal);
 
-	document
-		.querySelector('.modal-container')
-		.addEventListener('click', (event) => {
-			if (event.target === modalContainer || event.target === closeBtn) {
-				closeModal(event);
-			}
-		});
+	closeModal(modalContainer)
+		
 };
 
 document.querySelector('.open-modal').addEventListener('click', handleModal);
 
-const closeModal = () => {
+export const closeModal = (modalContainer) => {
 	const modal = document.querySelector('.modal-container');
-	modal.remove();
+	const closeBtn = document.querySelector('.close-modal');
+
+	modalContainer.addEventListener('click', (event) => {
+		if (event.target === modalContainer || event.target === closeBtn) {
+			modal.remove();
+		}
+	});
 };

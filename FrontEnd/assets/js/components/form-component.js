@@ -1,11 +1,12 @@
 import { createElement } from '../models/htmlElement-model.js';
 import { previewImage, sendForm } from '../models/form-model.js';
 import { handleModal } from '../script.js';
+import { closeModal } from '../script.js';
 
 export const createFormModal = () => {
   const modal = document.querySelector('.modal');
   const h2 = createElement('h2', null, 'Ajouter une photo');
-  const closeModal = createElement('span', 'close-modal', null, '&#215;', );
+  const closeButton = createElement('span', 'close-modal', null, '&#215;', );
   const goBackButton = createElement('span', 'go-back', null, '&#8592;', );
   const form = createElement('form', 'modal-form');
   const formContainer = createElement('div', 'form-container');
@@ -30,7 +31,7 @@ export const createFormModal = () => {
 
   modal.innerHTML = '';
   modal.appendChild(h2);
-  modal.appendChild(closeModal);
+  modal.appendChild(closeButton);
   modal.appendChild(goBackButton);
   modal.appendChild(form);
   form.appendChild(formContainer);
@@ -58,8 +59,8 @@ export const createFormModal = () => {
     sendForm();
   })
   previewImage(fileInput);
-
   goBack(goBackButton);
+  closeModal(closeButton);
 
   form.addEventListener('input', () => {
     if (isFiled()) {
