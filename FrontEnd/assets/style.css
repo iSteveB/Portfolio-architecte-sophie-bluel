@@ -431,16 +431,23 @@ h2 > .editing {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 20px 150px;
+	padding: 0px 150px;
 	background-color: #f6f6f6;
 	border-radius: 5px;
 	cursor: pointer;
 	gap: 10px;
 }
+
 .upload-file img {
 	width: 80px;
 	height: 80px;
 }
+
+.upload-file .preview-image {
+	width: 150px;
+	height: 200px;
+}
+
 .upload-file p {
 	background-color: #CBD6DD;
 	padding: 14px 30px;
@@ -449,9 +456,11 @@ h2 > .editing {
 	font-weight: 400;
 	font-size: 14px;
 	color: #306685;
+	
 }
 
 .upload-file span {
+	margin-bottom: 20px;
 	font-family: 'Work Sans';
 	font-weight: 400;
 	font-size: 12px;
@@ -476,7 +485,6 @@ h2 > .editing {
 	font-size: 14px;
 	color: #444444;
 	border-radius: 5px;
-	width: 100%;
 }
 
 .title-container, .category-container {
