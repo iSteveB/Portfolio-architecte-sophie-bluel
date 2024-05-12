@@ -3,25 +3,25 @@ const galleryContainer = document.querySelector('.gallery');
 
 export const createGalleryCard = ({ imageUrl, title }) => {
 	const figure = document.createElement('figure');
-	const img = document.createElement('img');
+	const image = document.createElement('img');
 	const figCaption = document.createElement('figcaption');
 
-	img.src = imageUrl;
-	img.alt = title;
+	image.src = imageUrl;
+	image.alt = title;
 	figCaption.textContent = title;
 
-	figure.appendChild(img);
+	figure.appendChild(image);
 	figure.appendChild(figCaption);
 	galleryContainer.appendChild(figure);
 };
 
 export const createImageGallery = ({ imageUrl, title }) => {
 	const figure = document.createElement('figure');
-	const img = document.createElement('img');
+	const image = document.createElement('img');
 
-	img.src = imageUrl;
-	img.alt = title;
-	figure.appendChild(img);
+	image.src = imageUrl;
+	image.alt = title;
+	figure.appendChild(image);
 }
 
 export const createImg = ({ imageUrl, title, id }) => {

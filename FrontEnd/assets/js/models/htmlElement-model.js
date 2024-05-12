@@ -22,8 +22,8 @@ export const createListItem = (item) => {
 };
 
 export const createImg = (item) => {
-  const img = document.createElement('img');
-  img.src = item.imageUrl;
-  img.alt = item.title;
-  return img;
+  const image = document.createElement('img');
+  image.src = item.imageUrl;
+  image.alt = item.title;
+  return image;
 }
