@@ -1,5 +1,6 @@
 import { createElement } from '../models/htmlElement-model.js';
 import { createCategories } from './filter-component.js';
+
 export const deleteToken = () => {
 	localStorage.removeItem('token');
 	localStorage.removeItem('userId');

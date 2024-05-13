@@ -1,5 +1,4 @@
 import { createElement } from '../models/htmlElement-model.js';
-import { previewImage } from '../models/form-model.js';
 import { handleModal } from '../script.js';
 import { closeModal } from './modal-component.js';
 import { createWork } from '../services/work-service.js';
@@ -29,7 +28,7 @@ export const createFormModal = () => {
 	const option2 = createElement('option', null, 'Appartement', null, { value: '2'});
 	const option3 = createElement('option', null, 'Hotels & restaurants', null, { value: '3' });
 	const submitButton = createElement('button', null, 'Valider', null, { type: 'submit', disabled: true});
-
+	
 	modal.innerHTML = '';
 	modal.appendChild(h2);
 	modal.appendChild(closeButton);
@@ -55,7 +54,7 @@ export const createFormModal = () => {
 	categorySelect.appendChild(option2);
 	categorySelect.appendChild(option3);
 	form.appendChild(submitButton);
-
+	
 	
 	previewImage(fileInput);
 	goBack(goBackButton);
@@ -77,10 +76,28 @@ export const createFormModal = () => {
 	return modal;
 };
 
-export const goBack = (button) => {
+const previewImage = (input) => {
+	input.addEventListener('change', (event) => {
+		const file = event.target.files[0];
+		const reader = new FileReader();
+		reader.onload = function (event) {
+			const label = document.querySelector('.upload-file');
+			const previewContainer = createElement('div', 'preview-container');
+			const previewImage = createElement('img', 'preview-image');
+
+			previewImage.src = event.target.result;
+			label.innerHTML = '';
+			previewContainer.appendChild(previewImage);
+			label.appendChild(previewContainer);
+		};
+		reader.readAsDataURL(file);
+	});
+};
+
+const goBack = (button) => {
 	button.addEventListener('click', () => {
 		const modal = document.querySelector('.modal-container');
-
+		
 		modal.remove();
 		handleModal();
 	});
