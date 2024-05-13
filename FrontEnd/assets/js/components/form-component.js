@@ -78,6 +78,7 @@ export const createFormModal = () => {
 export const goBack = (button) => {
 	button.addEventListener('click', () => {
 		const modal = document.querySelector('.modal-container');
+
 		modal.remove();
 		handleModal();
 	});
@@ -87,6 +88,7 @@ const isEmpty = () => {
 	const titleInput = document.getElementById('title');
 	const categoryInput = document.getElementById('category');
 	const fileInput = document.getElementById('file');
+	
 	if (titleInput.value && categoryInput.value !== 'null' && fileInput.files[0]) {
 		console.log(fileInput)
 		return true;
