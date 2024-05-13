@@ -1,5 +1,8 @@
-
 import { createElement } from '../models/htmlElement-model.js';
+import { deleteWork } from '../services/work-service.js';
+import { displayGallery } from './gallery-component.js';
+import { checkUser } from '../utils/checkUser.js';
+import { createFormModal } from './form-component.js';
 
 export const displayImages = (galleryItems) => {
 	const modalContent = document.querySelector('.modal-content');
@@ -52,3 +55,37 @@ export const closeModal = (modalContainer) => {
 	});
 };
 
+export const handleModal = (data) => {
+	createModal();
+	
+	const token = checkUser();
+	const modalContainer = document.querySelector('.modal-container');
+	const modalContent = document.querySelector('.modal-content');
+	
+	modalContainer.style.display = 'flex';
+	modalContent.innerHTML = '';
+
+	displayImages(data);
+
+	document.querySelectorAll('.delete-icon').forEach((deleteIcon) =>
+		deleteIcon.addEventListener('click',(event) => handleDeleteIconClick(event, token))
+	);
+
+	document
+		.querySelector('.modal button')
+		.addEventListener('click', createFormModal);
+
+	closeModal(modalContainer);
+}
+
+const handleDeleteIconClick = async (event, token) => {
+	event.preventDefault();
+	const workId = event.target.id;
+	try {
+		await deleteWork(workId, token);
+		const newGalleryData = await getData();
+		displayGallery(newGalleryData);
+	} catch (error) {
+		console.error(error);
+	}
+};

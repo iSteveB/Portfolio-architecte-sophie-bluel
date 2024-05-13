@@ -1,7 +1,7 @@
 import { createElement } from '../models/htmlElement-model.js';
-import { handleModal } from '../script.js';
+import { handleModal } from './modal-component.js';
 import { closeModal } from './modal-component.js';
-import { createWork } from '../services/work-service.js';
+import { createWork, getData } from '../services/work-service.js';
 
 export const createFormModal = () => {
 	const modal = document.querySelector('.modal');
@@ -95,11 +95,11 @@ const previewImage = (input) => {
 };
 
 const goBack = (button) => {
-	button.addEventListener('click', () => {
+	button.addEventListener('click', async () => {
 		const modal = document.querySelector('.modal-container');
-		
+		const data = await getData();
 		modal.remove();
-		handleModal();
+		handleModal(data);
 	});
 };
 
