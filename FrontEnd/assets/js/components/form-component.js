@@ -55,15 +55,11 @@ export const createFormModal = () => {
 	categorySelect.appendChild(option3);
 	form.appendChild(submitButton);
 
-	form.addEventListener('submit', (event) => {
-		event.preventDefault();
-		sendForm();
-	});
-
+	
 	previewImage(fileInput);
 	goBack(goBackButton);
 	closeModal(closeButton);
-
+	
 	form.addEventListener('input', () => {
 		if (isEmpty()) {
 			submitButton.disabled = false;
@@ -71,7 +67,12 @@ export const createFormModal = () => {
 			submitButton.disabled = true;
 		}
 	});
-
+	
+	form.addEventListener('submit', (event) => {
+		event.preventDefault();
+		sendForm();
+	});
+	
 	return modal;
 };
 
