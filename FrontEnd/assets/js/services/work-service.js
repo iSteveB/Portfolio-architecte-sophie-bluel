@@ -1,3 +1,4 @@
+import { checkUser } from '../utils/checkUser.js';
 export const getData = () => {
 	return new Promise((resolve, reject) => {
 		fetch('http://localhost:5678/api/works')
@@ -7,11 +8,22 @@ export const getData = () => {
 	});
 };
 
-export const createWork = async (data, token) => {
+export const createWork = async () => {
+	const token = checkUser();
+
+	const file = document.getElementById('file').files[0];
+	const title = document.getElementById('title').value;
+	const category = document.getElementById('category').value;
+
+	const formData = new FormData();
+	formData.append('image', file);
+	formData.append('category', category);
+	formData.append('title', title);
+
 	return new Promise((resolve, reject) => {
 		fetch('http://localhost:5678/api/works', {
 			method: 'POST',
-			body: data,
+			body: formData,
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},

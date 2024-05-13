@@ -1,7 +1,8 @@
 import { createElement } from '../models/htmlElement-model.js';
-import { previewImage, sendForm } from '../models/form-model.js';
+import { previewImage } from '../models/form-model.js';
 import { handleModal } from '../script.js';
 import { closeModal } from './modal-component.js';
+import { createWork } from '../services/work-service.js';
 
 export const createFormModal = () => {
 	const modal = document.querySelector('.modal');
@@ -70,7 +71,7 @@ export const createFormModal = () => {
 	
 	form.addEventListener('submit', (event) => {
 		event.preventDefault();
-		sendForm();
+		createWork();
 	});
 	
 	return modal;
@@ -91,7 +92,6 @@ const isEmpty = () => {
 	const fileInput = document.getElementById('file');
 	
 	if (titleInput.value && categoryInput.value !== 'null' && fileInput.files[0]) {
-		console.log(fileInput)
 		return true;
 	} else {
 		return false;

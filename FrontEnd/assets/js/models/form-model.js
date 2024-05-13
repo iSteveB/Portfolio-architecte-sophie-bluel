@@ -1,5 +1,3 @@
-import { checkUser } from '../utils/checkUser.js';
-import { createWork } from '../services/work-service.js';
 import { createElement } from './htmlElement-model.js';
 
 export const previewImage = (input) => {
@@ -10,7 +8,7 @@ export const previewImage = (input) => {
 			const label = document.querySelector('.upload-file');
 			const previewContainer = createElement('div', 'preview-container');
 			const previewImage = createElement('img', 'preview-image');
-			
+
 			previewImage.src = event.target.result;
 			label.innerHTML = '';
 			previewContainer.appendChild(previewImage);
@@ -18,20 +16,4 @@ export const previewImage = (input) => {
 		};
 		reader.readAsDataURL(file);
 	});
-};
-
-export const sendForm = () => {
-		const token = checkUser();
-
-		const file = document.getElementById('file').files[0];
-		const title = document.getElementById('title').value;
-		const category = document.getElementById('category').value;
-
-		const formData = new FormData();
-		formData.append('image', file);
-		formData.append('category', category);
-		formData.append('title', title);
-
-		createWork(formData, token);
-
 };
