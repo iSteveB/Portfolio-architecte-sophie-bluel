@@ -1,5 +1,4 @@
 
-import { createImg } from '../models/gallery-model.js';
 import { createElement } from '../models/htmlElement-model.js';
 
 export const displayImages = (galleryItems) => {
@@ -13,8 +12,15 @@ export const displayImages = (galleryItems) => {
 	modalContent.innerHTML = '';
 
 	galleryItems.forEach(({ imageUrl, title, id }) => {
-		const image = createImg({ imageUrl, title, id });
-		modalContent.appendChild(image);
+		const imageContainer = createElement('div', 'image-container');
+		const image = createElement('img', 'edit-image', null, null, { src: imageUrl, alt: title });
+		const icon = createElement('i', 'delete-icon');
+		const deleteIcon = createElement('img', 'delete-icon', null, null, { src: './assets/icons/trash-can-solid.svg', alt: 'delete', id: id });
+
+		icon.appendChild(deleteIcon);
+		imageContainer.appendChild(icon);
+		imageContainer.appendChild(image);
+		modalContent.appendChild(imageContainer);
 	});
 };
 
