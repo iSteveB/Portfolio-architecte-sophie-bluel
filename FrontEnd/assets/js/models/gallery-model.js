@@ -1,14 +1,12 @@
 
+import { createElement } from '../models/htmlElement-model.js'
+
 const galleryContainer = document.querySelector('.gallery');
 
 export const createGalleryCard = ({ imageUrl, title }) => {
-	const figure = document.createElement('figure');
-	const image = document.createElement('img');
-	const figCaption = document.createElement('figcaption');
-
-	image.src = imageUrl;
-	image.alt = title;
-	figCaption.textContent = title;
+	const figure = createElement('figure');
+	const image = createElement('img', null, null, null, { src: imageUrl, alt: title });
+	const figCaption = createElement('figcaption', null, title);
 
 	figure.appendChild(image);
 	figure.appendChild(figCaption);
