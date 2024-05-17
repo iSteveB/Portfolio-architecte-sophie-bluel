@@ -1,24 +1,29 @@
 import { createElement } from '../models/htmlElement-model.js';
 import { deleteWork } from '../services/work-service.js';
 import { displayGallery } from './gallery-component.js';
-import { checkUser } from '../utils/checkUser.js';
 import { createFormModal } from './form-component.js';
+import { getData } from '../services/work-service.js';
 
 export const displayImages = (galleryItems) => {
 	const modalContent = document.querySelector('.modal-content');
-	
-	if (!modalContent) {
-	    console.error('Aïe, une erreur est survenue');
-	    return;
-	}
 
-	modalContent.innerHTML = '';
+	if (!modalContent) {
+		console.error('Aïe, une erreur est survenue');
+		return;
+	}
 
 	galleryItems.forEach(({ imageUrl, title, id }) => {
 		const imageContainer = createElement('div', 'image-container');
-		const image = createElement('img', 'edit-image', null, null, { src: imageUrl, alt: title });
+		const image = createElement('img', 'edit-image', null, null, {
+			src: imageUrl,
+			alt: title,
+		});
 		const icon = createElement('i', 'delete-icon');
-		const deleteIcon = createElement('img', 'delete-icon', null, null, { src: './assets/icons/trash-can-solid.svg', alt: 'delete', id: id });
+		const deleteIcon = createElement('img', 'delete-icon', null, null, {
+			src: './assets/icons/trash-can-solid.svg',
+			alt: 'delete',
+			id: id,
+		});
 
 		icon.appendChild(deleteIcon);
 		imageContainer.appendChild(icon);
@@ -42,7 +47,7 @@ export const createModal = () => {
 	modal.appendChild(addButton);
 
 	document.body.appendChild(modalContainer);
-}
+};
 
 export const closeModal = (modalContainer) => {
 	const modal = document.querySelector('.modal-container');
@@ -55,20 +60,21 @@ export const closeModal = (modalContainer) => {
 	});
 };
 
-export const handleModal = (data) => {
+export const handleModal = (data, token) => {
 	createModal();
-	
-	const token = checkUser();
+
 	const modalContainer = document.querySelector('.modal-container');
 	const modalContent = document.querySelector('.modal-content');
-	
+
 	modalContainer.style.display = 'flex';
 	modalContent.innerHTML = '';
 
 	displayImages(data);
 
 	document.querySelectorAll('.delete-icon').forEach((deleteIcon) =>
-		deleteIcon.addEventListener('click',(event) => handleDeleteIconClick(event, token))
+		deleteIcon.addEventListener('click', (event) => {
+			handleDeleteIconClick(event, token);
+		})
 	);
 
 	document
@@ -76,7 +82,7 @@ export const handleModal = (data) => {
 		.addEventListener('click', createFormModal);
 
 	closeModal(modalContainer);
-}
+};
 
 const handleDeleteIconClick = async (event, token) => {
 	event.preventDefault();

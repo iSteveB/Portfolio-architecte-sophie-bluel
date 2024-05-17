@@ -18,4 +18,4 @@ filterButtons.forEach((button) => {
 	button.addEventListener('click', (event) => handleFilterClick(event, data));
 });
 
-document.querySelector('.open-modal').addEventListener('click',() => handleModal(data));
+document.querySelector('.open-modal').addEventListener('click',() => handleModal(data, token));
