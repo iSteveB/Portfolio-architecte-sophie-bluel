@@ -1,11 +1,13 @@
 import { checkUser } from '../utils/checkUser.js';
-export const getData = () => {
-	return new Promise((resolve, reject) => {
-		fetch('http://localhost:5678/api/works')
-			.then((response) => response.json())
-			.then((data) => resolve(data))
-			.catch((error) => reject(error));
-	});
+
+export const getData = async () => {
+	try {
+		const response = await fetch('http://localhost:5678/api/works');
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		throw error;
+	}
 };
 
 export const createWork = async () => {
@@ -20,38 +22,32 @@ export const createWork = async () => {
 	formData.append('category', category);
 	formData.append('title', title);
 
-	return new Promise((resolve, reject) => {
-		fetch('http://localhost:5678/api/works', {
+	try {
+		const response = await fetch('http://localhost:5678/api/works', {
 			method: 'POST',
 			body: formData,
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		})
-			.then((response) => {
-				if (response.ok) {
-					return response.json();
-				} else {
-					throw new Error('Failed to create work');
-				}
-			})
-			.then((data) => resolve(data))
-			.catch((error) => reject(error));
-	});
+		});
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		throw error;
+	}
 };
 
-export const deleteWork = (id, token) => {
-	return new Promise((resolve, reject) => {
-		fetch(`http://localhost:5678/api/works/${id}`, {
+export const deleteWork = async (id, token) => {
+	try {
+		const response = await fetch(`http://localhost:5678/api/works/${id}`, {
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token}`,
+				Authorization: `bearer ${token}`,
 			},
-		})
-			.then((response) => {
-				if (response.ok) return 'Work deleted !';
-			})
-			.catch((error) => reject(error));
-	});
+		});
+		if (response.ok) return 'Work deleted !';
+	} catch (error) {
+		throw error;
+	}
 };
