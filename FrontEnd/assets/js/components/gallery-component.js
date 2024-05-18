@@ -12,8 +12,8 @@ const createGalleryCard = ({ imageUrl, title }) => {
 	galleryContainer.appendChild(figure);
 };
 
-export const displayGallery = (galleryItems) => {
+export const displayGallery = (data) => {
   galleryContainer.innerHTML = '';
-  galleryItems.forEach(createGalleryCard);
+  data.forEach(createGalleryCard);
 };
 

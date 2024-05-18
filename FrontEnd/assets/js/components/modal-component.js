@@ -85,7 +85,6 @@ export const handleModal = (data, token) => {
 };
 
 const handleDeleteIconClick = async (event, token) => {
-	event.preventDefault();
 	const workId = event.target.id;
 	try {
 		await deleteWork(workId, token);
