@@ -250,7 +250,7 @@ footer nav ul {
 
 #login a {
 	color: #3D3D3D;
-	font-weight: semibold;
+	font-weight: 500;
 }
 
 .error {
@@ -387,7 +387,6 @@ h2 > .editing {
 
 .modal-form {
 	display: flex;
-	background-color: red;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
