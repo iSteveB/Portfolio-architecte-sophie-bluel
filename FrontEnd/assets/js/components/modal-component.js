@@ -52,15 +52,17 @@ export const createModal = () => {
 export const closeModal = (modalContainer) => {
 	const modal = document.querySelector('.modal-container');
 	const closeButton = document.querySelector('.close-modal');
+	const submitButton = document.querySelector('.submit-button');
 
 	modalContainer.addEventListener('click', (event) => {
-		if (event.target === modalContainer || event.target === closeButton) {
+		if (event.target === modalContainer || event.target === closeButton || event.target === submitButton) {
 			modal.remove();
 		}
 	});
 };
 
-export const handleModal = (data, token) => {
+export const handleModal = async ( token ) => {
+	const data = await getData();
 	createModal();
 
 	const modalContainer = document.querySelector('.modal-container');
@@ -90,6 +92,7 @@ const handleDeleteIconClick = async (event, token) => {
 		await deleteWork(workId, token);
 		const newGalleryData = await getData();
 		displayGallery(newGalleryData);
+		handleModal(newGalleryData, token);
 	} catch (error) {
 		console.error(error);
 	}
