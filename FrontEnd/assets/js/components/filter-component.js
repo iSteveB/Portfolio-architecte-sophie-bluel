@@ -32,7 +32,7 @@ export const handleFilterClass = (event) => {
   event.target.classList.add('active');
 };
 
-export const handleFilterClick = async (event, data) => {
+export const handleFilterClick = (event, data) => {
 	const buttonId = event.target.id;
 	if (buttonId === '0') {
 		displayGallery(data);
