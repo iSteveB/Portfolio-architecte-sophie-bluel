@@ -31,3 +31,14 @@ export const handleFilterClass = (event) => {
   filterButtons.forEach(button => button.classList.remove('active'));
   event.target.classList.add('active');
 };
+
+export const handleFilterClick = (event, data) => {
+	const buttonId = event.target.id;
+	if (buttonId === '0') {
+		displayGallery(data);
+		handleFilterClass(event);
+	} else {
+		filterGalleryByCategory(data, Number(buttonId));
+		handleFilterClass(event);
+	}
+};

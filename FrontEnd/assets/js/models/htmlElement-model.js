@@ -10,10 +10,3 @@ export const createElement = (tag, className, textContent, innerHTML, attributes
 	}
 	return element;
 }
-
-export const createImg = (item) => {
-  const image = document.createElement('img');
-  image.src = item.imageUrl;
-  image.alt = item.title;
-  return image;
-}

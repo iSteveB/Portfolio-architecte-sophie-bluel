@@ -1,17 +1,12 @@
 export const getCategories = async () => {
-  return new Promise((resolve, reject) => {
-    fetch('http://localhost:5678/api/categories')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch categories');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        resolve(data);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  })
+  try {
+    const response = await fetch('http://localhost:5678/api/categories');
+    if (!response.ok) {
+      throw new Error('Failed to fetch categories');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
 };
